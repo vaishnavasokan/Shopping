@@ -18,7 +18,7 @@
   
 </head>
 <body>
-  <!--================ Start Header Menu Area =================-->
+    <!--================ Start Header Menu Area =================-->
 	<header class="header_area">
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
@@ -33,37 +33,13 @@
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
               <li class="nav-item active"><a class="nav-link" href="index">Home</a></li>
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Shop</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
-                </ul>
-							</li>
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Blog</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-                </ul>
-							</li>
-							<li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Pages</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                  <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">Tracking</a></li>
-                </ul>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="/product">Add Product</a></li>
+              <li class="nav-item"><a class="nav-link" href="/product/manage">Manage Product</a></li>
+              <li class="nav-item"><a class="nav-link" href="/product/view">Products</a></li>
+              <li class="nav-item"><a class="nav-link" href="product/cart">Cart</a></li>
+              <li class="nav-item"><a class="nav-link" href="/product/view">Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="index">LogOut</a></li>
             </ul>
-
             <ul class="nav-shop">
               <li class="nav-item"><button><i class="ti-search"></i></button></li>
               <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
@@ -75,22 +51,40 @@
     </div>
   </header>
 	<!--================ End Header Menu Area =================-->
+  
+  <!--================    Offer  Section =================-->
+  <section class="offer" id="parallax-1" data-anchor-target="#parallax-1" data-300-top="background-position: 20px 30px" data-top-bottom="background-position: 0 20px">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-5">
+            <div class="offer__content text-center">
+              <h3>Up To 50% Off</h3>
+              <h4>Winter Sale</h4>
+              <p>Him she'd let them sixth saw light</p>
+              <a class="button button--active mt-3 mt-xl-4" href="#">Shop Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<br>
+  <!--================    Discount Section =================-->
 
     <div class="container">
-      <form action="/product/view" method="GET">
+      <form >
       <div class="row">
             <br>
             <% for(var i=0;i<productoutput.length;i++) {%>
               <div class="col col-4 col-md-4">
               <div class="card" >
-                  <img class="card-img-top rounded-circle mx-auto border border-primary" src="http://localhost:8000/product/view/<%= productoutput[i].image%>"   height="300px">
+                  <img class="rounded-circle mx-auto border border-primary" src="/product/view/<%= productoutput[i].image%>"   height="300px" width="300px">
                   <h4 class="card-title text-center" style="font-family: Cambria " ><%= productoutput[i].pname%></h4>
                     <div class="card-body">
                       <h6 class="card-text text-center" style="font-family: Cambria">Brand : <%= productoutput[i].brand%></h6>
-                      <h6 class="card-text text-center"style="font-family: Cambria">price : <%= productoutput[i].price%>.00 Rs</h6>
+                      <h6 class="card-text text-center"style="font-family: Cambria">price : ₹ <%= productoutput[i].price%>.00</h6>
                       <h6 class="card-text text-center"style="font-family: Cambria">10% Discount</h6>
-                        <a class="text-left button button-header " href="#">Add to Cart</a>
-                        <a class="text-right button button-header" href="#">Buy</a>
+                        <a class="text-left button button-header " href="/product/addtocart/<%=productoutput[i]._id%>">Add to Cart</a>
+                        <a class="text-right button button-header" href="/product/view">Buy</a>
                   </div>
                 </div>
                 <hr>

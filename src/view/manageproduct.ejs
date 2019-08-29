@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Aroma Shop - Home</title>
+  <link rel="icon" href="img/Fevicon.png" type="image/png">
   <base href="/">
-	<link rel="icon" href="img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
 	<link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
@@ -15,10 +15,11 @@
   <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
 
   <link rel="stylesheet" href="/css/style.css">
+  
 </head>
 <body>
-    <!--================ Start Header Menu Area =================-->
-	<header class="header_area">
+   <!--================ Start Header Menu Area =================-->
+   <header class="header_area">
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
@@ -36,7 +37,7 @@
               <li class="nav-item"><a class="nav-link" href="/product/manage">Manage Product</a></li>
               <li class="nav-item"><a class="nav-link" href="/product/view">Products</a></li>
               <li class="nav-item"><a class="nav-link" href="product/cart">Cart</a></li>
-              <li class="nav-item"><a class="nav-link" href="/product/view">Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="/product/manage">Contact</a></li>
               <li class="nav-item"><a class="nav-link" href="index">LogOut</a></li>
             </ul>
             <ul class="nav-shop">
@@ -50,72 +51,49 @@
     </div>
   </header>
 	<!--================ End Header Menu Area =================-->
-
-  <main class="site-main">
-    
-    <!--================ Hero banner start =================-->
+  
+  <!--================    Offer  Section =================-->
+  <section class="offer" id="parallax-1" data-anchor-target="#parallax-1" data-300-top="background-position: 20px 30px" data-top-bottom="background-position: 0 20px">
       <div class="container">
-        <div class="row no-gutters align-items-center pt-60px">
-
-            <!-- cart starts here -->
-            <section class="cart_area">
-                <div class="container">
-                    <div class="cart_inner">
-                        <div class="table-responsive">
-                            <a class="text-right button button-login " href="/product/view">Continue Shopping</a>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Product</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% for(let i=0;i<cartoutput.length;i++) {%>
-                                    <tr>
-                                        <td>
-                                            <div class="media">
-                                                <div class="d-flex">
-                                                    <img class="rounded-circle mx-auto border border-primary" src="/product/view/<%= cartoutput[i].image%>" height="100px" width="100px" alt="">
-                                                </div>
-                                                <div class="media-body">
-                                                    <p><%= cartoutput[i].pname %></p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h5>₹ <%= cartoutput[i].price %></h5>
-                                        </td>
-                                        <td>
-                                            <div class="product_count">
-                                                <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                                                    class="input-text qty">
-                                                <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                                    class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                                <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp; &amp; sst > 0 ) result.value--;return false;"
-                                                    class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h5>₹<%= cartoutput[i].total %></h5>
-                                        </td>
-                                        <td>
-                                          <a class="text-left button button-login" href="/product/remove/<%=cartoutput[i].cartid%>">Remove</a>
-                                        </td>
-                                    </tr>
-                                    <% }%>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <div class="row">
+          <div class="col-xl-5">
+            <div class="offer__content text-center">
+              <h3>Up To 50% Off</h3>
+              <h4>Winter Sale</h4>
+              <p>Him she'd let them sixth saw light</p>
+              <a class="button button--active mt-3 mt-xl-4" href="#">Shop Now</a>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+<br>
+  <!--================    Discount Section =================-->
+
+    <div class="container">
+      <form >
+      <div class="row">
+            <br>
+            <% for(var i=0;i<productoutput.length;i++) {%>
+              <div class="col col-4 col-md-4">
+              <div class="card" >
+                  <img class="rounded-circle mx-auto border border-primary" src="/product/view/<%= productoutput[i].image%>"   height="300px" width="300px">
+                  <h4 class="card-title text-center" style="font-family: Cambria " ><%= productoutput[i].pname%></h4>
+                    <div class="card-body">
+                      <h6 class="card-text text-center" style="font-family: Cambria">Brand : <%= productoutput[i].brand%></h6>
+                      <h6 class="card-text text-center"style="font-family: Cambria">price : ₹ <%= productoutput[i].price%>.00</h6>
+                      <h6 class="card-text text-center"style="font-family: Cambria">10% Discount</h6>
+                        <a class="text-left button button-header " href="/product/manage">Edit</a>
+                        <a class="text-right button button-header" href="/product/deleteproduct/<%=productoutput[i].pid%>">Delete</a>
+                  </div>
+                </div>
+                <hr>
+              </div>
+                <%}%>
+      </div>
+    </form>
     </div>
     
-    <!-- cart ends here -->
-
   <!--================ Start footer Area  =================-->	
 	<footer class="footer">
 		<div class="footer-area">
@@ -134,7 +112,7 @@
 						</div>
 					</div>
 					
-					
+				
 					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
 						<div class="single-footer-widget tp_widgets">
 							<h4 class="footer_title">Contact Us</h4>

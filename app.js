@@ -10,7 +10,7 @@ app.use("/product",productrouter);
 
 app.use(express.static(path.join(__dirname,"/public")));
 
-app.listen(8000,function(req,res)
+app.listen(process.env.PORT || 8080,function(req,res)
 {
     console.log("Server started.");
 })
@@ -43,27 +43,8 @@ app.get("/register",function(req,res)
 //     res.render("productdetails");
 // })
 
-app.get("/blog",function(req,res)
-{
-    res.render("blog");
-})
 
-app.get("/category",function(req,res)
-{
-    res.render("category");
-})
 
-app.get("/sample",function(req,res)
-{
-    res.render("sample");
-})
 
-app.get("/viewcart",function(req,res)
-{
-    res.render("viewcart");
-})
 
-app.get("/cart",function(req,res)
-{
-    res.render("cart");
-})
+

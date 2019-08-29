@@ -1,7 +1,7 @@
 var express=require("express");
 var mongoose = require("mongoose");
 var bodyparser = require("body-parser");
-var url="mongodb://localhost/sampledb";
+var url="mongodb+srv://dinish:dinish@cluster0-llco8.mongodb.net/sampledb?retryWrites=true&w=majority";
 
 var user=require("../model/usermodel")
 
@@ -35,7 +35,7 @@ router.post("/login",function(req,res)
             if(result.length==0)
             res.redirect("/index")
             else
-            res.redirect("/user/productdetails");
+            res.redirect("/product/view");
         }
     })
 })
